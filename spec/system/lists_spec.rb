@@ -77,20 +77,19 @@ describe '投稿に関するテスト' do
     before do
       visit edit_list_path(list)
     end
-      context '表示の確認' do
-        it '編集前のタイトルと本文がフォームに表示(セット)されている' do
-          expect(page).to have_field 'list[title]', with: book.title
-          expect(page).to have_field 'list[body]', with: book.body
-        end
-        it '保存ボタンが表示される' do
-          expect(page).to have_button '保存'
-        end
+    context '表示の確認' do
+      it '編集前のタイトルと本文がフォームに表示(セット)されている' do
+        expect(page).to have_field 'list[title]', with: list.title
+        expect(page).to have_field 'list[body]', with: list.body
       end
-      context '更新処理に関するテスト' do
-        it '更新後のリダイレクト先は正しいか' do
-          fill_in 'list[title]', with: Faker::Lorem.characters(number:10)
-          fill_in 'list[body]', with: Faker::Lorem.characters(number:30)
-        end
+      it '保存ボタンが表示される' do
+        expect(page).to have_button '保存'
+      end
+    end
+    context '更新処理に関するテスト' do
+      it '更新後のリダイレクト先は正しいか' do
+        fill_in 'list[title]', with: Faker::Lorem.characters(number:10)
+        fill_in 'list[body]', with: Faker::Lorem.characters(number:30)
       end
     end
   end
