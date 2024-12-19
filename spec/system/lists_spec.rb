@@ -48,7 +48,7 @@ describe '投稿に関するテスト' do
   end
 
   describe '詳細画面のテスト' do
-    bofore do
+    before do
       visit list_path(list)
     end
     context '表示の確認' do
@@ -63,7 +63,7 @@ describe '投稿に関するテスト' do
       it '編集の遷移先は編集画面か' do
         edit_link = find_all('a')[3]
         edit_link.click
-        expect(current_path).to eq('/lists/ + list.id.to_s + '/edit') 
+        expect(current_path).to eq('/lists/' + list.id.to_s + '/edit')
       end
     end
     context 'list削除のテスト' do
